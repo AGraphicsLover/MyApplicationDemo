@@ -1,0 +1,13 @@
+<resources>
+  <string name="app_name">MyApplicationDemo</string>
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragmentA">Hello blank fragmentA</string>
+  <string name="hello_blank_fragmentB">Hello blank fragmentB</string>
+  <string name="myString1">你好，点击我你猜会发生什么</string>
+  <string name="myString2">Activity1</string>
+  <string name="myString3">Activity2</string>
+  <string name="myString4">Activity3</string>
+  <string name="myString5">切换Fragment</string>
+  <string name="myString6">I am studying Android!</string>
+  <string name="myString7">我正在摸鱼！</string>
+</resources>
