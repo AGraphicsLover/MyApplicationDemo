@@ -12,6 +12,9 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
+    //设置Activity1的标题
+    supportActionBar?.title = "This is Activity1"
+
     //获取底部导航栏
     val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
     //设置导航栏选项点击事件监听器
@@ -37,7 +40,7 @@ class MainActivity : AppCompatActivity() {
       }
     }
 
-    //设置底部导航栏选中状态为ActivityA
+    //设置底部导航栏选中状态为Activity1
     bottomNavigationView.selectedItemId = R.id.action_activity1
 
     //默认显示FragmentA
