@@ -2,9 +2,7 @@ package com.example.myapplicationdemo
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Message
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -17,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     //获取底部导航栏
     val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
     //设置导航栏选项点击事件监听器
-    bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+    bottomNavigationView.setOnItemSelectedListener { item ->
       when (item.itemId) {
         R.id.action_activity1 -> {
           //startActivity(Intent(this@MainActivity, MainActivity::class.java))
