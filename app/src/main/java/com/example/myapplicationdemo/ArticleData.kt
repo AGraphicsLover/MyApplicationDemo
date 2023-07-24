@@ -9,7 +9,8 @@ data class ArticleData(
   val title: String,
   val author: String,
   val link: String,
-  val publishTime: Long
+  val publishTime: Long,
+  val shareUser: String
 ) {
   fun getFormattedPublishTime(): String {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
