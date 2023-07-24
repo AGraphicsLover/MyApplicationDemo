@@ -45,7 +45,7 @@ class FragmentB : Fragment() {
 
     //初始化dataList数据
     val dataList = mutableListOf<Pair<String, String>>()
-    for(i in 0..50) {
+    for (i in 0..50) {
       dataList.add(Pair("书名：Book$i", "这本书讲述了..."))
     }
     //找到RecyclerView
@@ -59,7 +59,7 @@ class FragmentB : Fragment() {
     //设置点击事件的回调函数
     myAdapter.setOnItemClickListener(object : MyAdapter.OnItemClickListener {
       override fun onItemClick(data: Pair<String, String>) {
-        Toast.makeText(requireContext(), "你点击了标题：${data.first}",Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "你点击了标题：${data.first}", Toast.LENGTH_SHORT).show()
       }
     })
   }

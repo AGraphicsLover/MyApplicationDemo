@@ -10,4 +10,6 @@
   <string name="myString5">切换Fragment</string>
   <string name="myString6">I am studying Android!</string>
   <string name="myString7">我正在摸鱼！</string>
+  <string name="myString8">作者：%s</string>
+  <string name="myString9">作者：未知</string>
 </resources>

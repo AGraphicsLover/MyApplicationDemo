@@ -24,18 +24,21 @@ class MainActivity : AppCompatActivity() {
           //startActivity(Intent(this@MainActivity, MainActivity::class.java))
           true
         }
+
         R.id.action_activity2 -> {
           val intent = Intent(this, MainActivity2::class.java)
           intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
           startActivity(intent)
           true
         }
+
         R.id.action_activity3 -> {
           val intent = Intent(this, MainActivity3::class.java)
           intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
           startActivity(intent)
           true
         }
+
         else -> false
       }
     }
@@ -60,7 +63,7 @@ class MainActivity : AppCompatActivity() {
   fun switchFragments(view: View) {
     val currentFragment = supportFragmentManager.findFragmentById(R.id.fragment_container)
 
-    if(currentFragment is FragmentA) {
+    if (currentFragment is FragmentA) {
       replaceFragment(FragmentB())
     } else if (currentFragment is FragmentB) {
       replaceFragment(FragmentA())

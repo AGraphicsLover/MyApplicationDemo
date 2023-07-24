@@ -5,10 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import org.w3c.dom.Text
 
-class MyAdapter(private val dataList: List<Pair<String, String>>)
-  : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(private val dataList: List<Pair<String, String>>) :
+  RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
   class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val titleTextView: TextView = itemView.findViewById((R.id.titleTextView))
     val contentTextView: TextView = itemView.findViewById(R.id.contentTextView)
@@ -25,7 +24,8 @@ class MyAdapter(private val dataList: List<Pair<String, String>>)
   }
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-    val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_content, parent, false)
+    val view =
+      LayoutInflater.from(parent.context).inflate(R.layout.list_item_content, parent, false)
     return MyViewHolder(view)
   }
 

@@ -3,12 +3,7 @@ package com.example.myapplicationdemo
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.FrameLayout
-import android.widget.LinearLayout
-import android.widget.RelativeLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity2 : AppCompatActivity() {
@@ -27,7 +22,7 @@ class MainActivity2 : AppCompatActivity() {
     //获取底部导航栏
     val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
     //设置导航栏选项点击事件监听器
-    bottomNavigationView.setOnNavigationItemSelectedListener { item ->
+    bottomNavigationView.setOnItemSelectedListener { item ->
       when (item.itemId) {
         R.id.action_activity1 -> {
           val intent = Intent(this, MainActivity::class.java)
