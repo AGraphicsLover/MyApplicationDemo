@@ -2,6 +2,7 @@ package com.example.myapplicationdemo
 
 import ArticleAdapter
 import ArticleResponse
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -20,11 +21,12 @@ class MainActivity3 : AppCompatActivity() {
 
   private lateinit var recyclerView: RecyclerView
   private lateinit var adapter: ArticleAdapter
-//  private lateinit var progressBar: ProgressBar
 
   private var currentPage = 0
   private var isLoading = false
   private var isLastPage = false
+
+  private var progressDialog: ProgressDialog? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -69,7 +71,6 @@ class MainActivity3 : AppCompatActivity() {
     recyclerView.layoutManager = LinearLayoutManager(this)
     adapter = ArticleAdapter(ArrayList())
     recyclerView.adapter = adapter
-//    progressBar = findViewById(R.id.progress_bar)
 
     //添加滚动监听器
     recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -85,12 +86,13 @@ class MainActivity3 : AppCompatActivity() {
         }
       }
     })
-
+    //发送网络请求
     sendRequest()
   }
 
   private fun sendRequest() {
-//    showProgressBar()
+
+    showProgressDialog()
 
     val url = "https://www.wanandroid.com/article/list/$currentPage/json"
     val request = okhttp3.Request.Builder()
@@ -100,7 +102,8 @@ class MainActivity3 : AppCompatActivity() {
     val client = OkHttpClient()
     client.newCall(request).enqueue(object : Callback {
       override fun onResponse(call: Call, response: Response) {
-//        hideProgressBar()
+
+        hideProgressDialog()
 
         val responseData = response.body?.string()
         val gson = Gson()
@@ -112,7 +115,9 @@ class MainActivity3 : AppCompatActivity() {
       }
 
       override fun onFailure(call: Call, e: IOException) {
-//        hideProgressBar()
+
+        hideProgressDialog()
+
         e.printStackTrace()
         runOnUiThread {
           showErrorToast()
@@ -123,7 +128,7 @@ class MainActivity3 : AppCompatActivity() {
 
   private fun loadMoreArticles() {
     isLoading = true
-//    showProgressBar()
+    showProgressDialog()
 
     val url = "https://www.wanandroid.com/article/list/$currentPage/json"
     val request = okhttp3.Request.Builder()
@@ -134,7 +139,7 @@ class MainActivity3 : AppCompatActivity() {
     client.newCall(request).enqueue(object : Callback {
       override fun onResponse(call: Call, response: Response) {
         isLoading = false
-//        hideProgressBar()
+        hideProgressDialog()
 
         val responseData = response.body?.string()
         val gson = Gson()
@@ -152,7 +157,7 @@ class MainActivity3 : AppCompatActivity() {
 
       override fun onFailure(call: Call, e: IOException) {
         isLoading = false
-//        hideProgressBar()
+        hideProgressDialog()
         e.printStackTrace()
         runOnUiThread {
           showErrorToast()
@@ -162,13 +167,20 @@ class MainActivity3 : AppCompatActivity() {
     })
   }
 
-//  private fun showProgressBar() {
-//    progressBar.visibility = View.VISIBLE
-//  }
-//
-//  private fun hideProgressBar() {
-//    progressBar.visibility = View.GONE
-//  }
+  // 显示ProgressDialog
+  private fun showProgressDialog() {
+    if (progressDialog == null) {
+      progressDialog = ProgressDialog(this)
+      progressDialog?.setMessage("正在加载中...")
+      progressDialog?.setCancelable(false)
+    }
+    progressDialog?.show()
+  }
+
+  // 隐藏ProgressDialog
+  private fun hideProgressDialog() {
+    progressDialog?.dismiss()
+  }
 
   private fun showErrorToast() {
     Toast.makeText(this@MainActivity3, "网络请求失败！", Toast.LENGTH_SHORT).show()
